@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://github.com/amadi904/chmuraprojekt.git/
-        username: ${{ secrets.AzureAppService_ContainerUsername_e3a9492efc1048de93dc6729936abac0 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6d994fe1e0b94277b0e769d98a28f9eb }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_b5e4fa743e334477b046d109da2b7187 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_124d6ed486554984acb10fa747b93c98 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: github.com/amadi904/chmuraprojekt.git/${{ secrets.AzureAppService_ContainerUsername_e3a9492efc1048de93dc6729936abac0 }}/Dockerfile:${{ github.sha }}
+        tags: github.com/amadi904/chmuraprojekt.git/${{ secrets.AzureAppService_ContainerUsername_b5e4fa743e334477b046d109da2b7187 }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'DockerApp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_096a846510d543d8b4334f3b81bd5696 }}
-        images: 'github.com/amadi904/chmuraprojekt.git/${{ secrets.AzureAppService_ContainerUsername_e3a9492efc1048de93dc6729936abac0 }}/Dockerfile:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_427d8554b8634dc6974ebd9e04994369 }}
+        images: 'github.com/amadi904/chmuraprojekt.git/${{ secrets.AzureAppService_ContainerUsername_b5e4fa743e334477b046d109da2b7187 }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}'
